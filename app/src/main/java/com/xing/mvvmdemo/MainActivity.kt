@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 class MainActivity : AppCompatActivity() {
 
     private val mContext: Context = this
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var homeViewModel: ApiHomeViewModel
     private lateinit var textView: TextView
     private lateinit var progressBar: ProgressBar
 
@@ -25,15 +25,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addObservers() {
-        homeViewModel = ViewModelProvider(this, HomeViewModelFactory(application, "ext params"))
-            .get(HomeViewModel::class.java).apply {
-                homeData.observe(this@MainActivity) {
-                    textView.text = it.items.toString()
-                }
-                loading.observe(this@MainActivity) {
-                    progressBar.visibility = if (it) View.VISIBLE else View.GONE
-                }
-            }
-        homeViewModel.fetchData("jetpack compose", 1, 15)
+//        homeViewModel = ViewModelProvider(this, HomeViewModelFactory(application, "ext params"))
+//            .get(ApiHomeViewModel::class.java).apply {
+//                homeData.observe(this@MainActivity) {
+//                    textView.text = it.items.toString()
+//                }
+//                loading.observe(this@MainActivity) {
+//                    progressBar.visibility = if (it) View.VISIBLE else View.GONE
+//                }
+//            }
+//        homeViewModel.fetchData("jetpack compose", 1, 15)
     }
 }

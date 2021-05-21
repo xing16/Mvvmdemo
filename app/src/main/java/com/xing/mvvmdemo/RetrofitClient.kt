@@ -16,19 +16,13 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 object RetrofitClient {
 
-    private var okHttpClient: OkHttpClient
-    private var retrofit: Retrofit
-
-    init {
-        okHttpClient = OkHttpClient.Builder()
-            .build()
-        retrofit = Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-    }
+    private var okHttpClient: OkHttpClient = OkHttpClient.Builder()
+        .build()
+    private var retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl("https://api.github.com/")
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
     fun <T> create(service: Class<T>): T {
         return retrofit.create(service)

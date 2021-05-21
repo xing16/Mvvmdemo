@@ -1,6 +1,7 @@
 package com.xing.mvvmdemo
 
 import android.content.Context
+import com.xing.mvvmdemo.home.HomeData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -16,7 +17,7 @@ import kotlinx.coroutines.withContext
  */
 object ApiRepository {
 
-    suspend fun fetchData(query: String, page: Int, perPage: Int): RepoSearchResponse {
+    suspend fun fetchData(query: String, page: Int, perPage: Int): HomeData {
         return withContext(Dispatchers.IO) {
             RetrofitClient.create(ApiService::class.java).searchRepos(query, page, perPage)
         }

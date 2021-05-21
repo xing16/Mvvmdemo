@@ -1,18 +1,9 @@
-package com.xing.mvvmdemo
+package com.xing.mvvmdemo.home
 
 import com.google.gson.annotations.SerializedName
 
-/**
- *
- * @ProjectName: mvvmdemo
- * @Description: 作用描述 <todo>
- * @Author: xinxing.tao
- * @CreateDate: 2021/4/13 10:01
- * @UpdateUser: xinxing.tao
- * @UpdateDate: 2021/4/13 10:01
- * @UpdateRemark: 无
- */
-data class RepoSearchResponse(
+
+data class HomeData(
     @SerializedName("total_count") val total: Int = 0,
     @SerializedName("items") val items: List<Repo> = emptyList()
 )

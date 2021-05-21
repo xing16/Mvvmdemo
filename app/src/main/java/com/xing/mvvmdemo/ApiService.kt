@@ -1,5 +1,6 @@
 package com.xing.mvvmdemo
 
+import com.xing.mvvmdemo.home.HomeData
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -20,5 +21,5 @@ interface ApiService {
         @Query("q") query: String,
         @Query("page") page: Int,
         @Query("per_page") itemsPerPage: Int
-    ): RepoSearchResponse
+    ): HomeData
 }
