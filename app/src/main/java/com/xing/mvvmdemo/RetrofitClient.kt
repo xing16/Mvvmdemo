@@ -19,7 +19,7 @@ object RetrofitClient {
     private var okHttpClient: OkHttpClient = OkHttpClient.Builder()
         .build()
     private var retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://api.github.com/")
+        .baseUrl("https://www.wanandroid.com/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

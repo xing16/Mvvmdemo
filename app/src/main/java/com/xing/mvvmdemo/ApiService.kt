@@ -1,7 +1,12 @@
 package com.xing.mvvmdemo
 
+import com.xing.mvvmdemo.base.Response
 import com.xing.mvvmdemo.home.HomeData
+import com.xing.mvvmdemo.wan.Article
+import com.xing.mvvmdemo.wan.ArticleData
+import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -22,4 +27,8 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("per_page") itemsPerPage: Int
     ): HomeData
+
+
+    @GET("article/list/{page}/json")
+    suspend fun getArticles(@Path("page") page: Int): Response<ArticleData>
 }
