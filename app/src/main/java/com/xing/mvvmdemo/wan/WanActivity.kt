@@ -6,12 +6,10 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.xing.mvvmdemo.MainApplication
 import com.xing.mvvmdemo.R
-import com.xing.mvvmdemo.base.Result
-import com.xing.mvvmdemo.base.data
-import org.koin.android.ext.android.inject
+import com.xing.mvvmdemo.http.Result
+import com.xing.mvvmdemo.http.data
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WanActivity : AppCompatActivity() {

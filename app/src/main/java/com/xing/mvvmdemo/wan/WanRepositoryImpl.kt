@@ -2,13 +2,16 @@ package com.xing.mvvmdemo.wan
 
 import android.util.Log
 import android.widget.Toast
-import com.xing.mvvmdemo.http.ApiException
 import com.xing.mvvmdemo.MainApplication
-import com.xing.mvvmdemo.http.Response
 import com.xing.mvvmdemo.common.base.BaseRepository
+import com.xing.mvvmdemo.http.ApiException
+import com.xing.mvvmdemo.http.Response
+import com.xing.mvvmdemo.http.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketException
