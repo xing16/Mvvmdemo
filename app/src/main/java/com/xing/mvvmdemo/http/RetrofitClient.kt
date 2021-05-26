@@ -1,8 +1,9 @@
-package com.xing.mvvmdemo
+package com.xing.mvvmdemo.http
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 /**
  *
@@ -16,10 +17,17 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 object RetrofitClient {
 
+    private const val BASE_URL = "https://www.wanandroid.com/"
+
     private var okHttpClient: OkHttpClient = OkHttpClient.Builder()
+        .connectTimeout(10, TimeUnit.SECONDS)
+        .readTimeout(10, TimeUnit.SECONDS)
+        .writeTimeout(10, TimeUnit.SECONDS)
+        .callTimeout(10, TimeUnit.SECONDS)
         .build()
+
     private var retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://www.wanandroid.com/")
+        .baseUrl(BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

@@ -1,9 +1,8 @@
 package com.xing.mvvmdemo.wan
 
-import com.xing.mvvmdemo.ApiService
-import com.xing.mvvmdemo.RetrofitClient
-import com.xing.mvvmdemo.base.Response
-import kotlinx.coroutines.flow.Flow
+import com.xing.mvvmdemo.http.ApiService
+import com.xing.mvvmdemo.http.RetrofitClient
+import com.xing.mvvmdemo.http.Response
 
 /**
  *
@@ -15,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
  * @UpdateDate: 2021/5/24 10:29
  * @UpdateRemark: 无
  */
-class WanDataSource {
+class WanRemoteDataSource {
 
     suspend fun getArticles(page: Int): Response<ArticleData> {
         return RetrofitClient.create(ApiService::class.java).getArticles(page)

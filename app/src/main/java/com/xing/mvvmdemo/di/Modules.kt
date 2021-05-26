@@ -1,9 +1,6 @@
-package com.xing.mvvmdemo.koin
+package com.xing.mvvmdemo.di
 
-import com.xing.mvvmdemo.wan.IWanRepository
-import com.xing.mvvmdemo.wan.WanDataSource
-import com.xing.mvvmdemo.wan.WanRepository
-import com.xing.mvvmdemo.wan.WanViewModel2
+import com.xing.mvvmdemo.wan.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -19,13 +16,16 @@ import org.koin.dsl.module
  */
 val dataSourceModule = module {
     factory {
-        WanDataSource()
+        WanRemoteDataSource()
+    }
+    factory {
+        WanCacheDataSource()
     }
 }
 
 val repositoryModule = module {
-    factory {
-        WanRepository(get()) as IWanRepository
+    single<IWanRepository> {
+        WanRepositoryImpl(get(), get())
     }
 }
 

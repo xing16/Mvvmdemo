@@ -1,8 +1,7 @@
 package com.xing.mvvmdemo.home
 
-import com.xing.mvvmdemo.base.AbsUserCase
+import com.xing.mvvmdemo.common.AbsUserCase
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
 
 class HomeUseCase(
     private val homeRepository: HomeRepository,

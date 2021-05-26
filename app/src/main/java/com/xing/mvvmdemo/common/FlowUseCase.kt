@@ -1,5 +1,6 @@
-package com.xing.mvvmdemo.base
+package com.xing.mvvmdemo.common
 
+import com.xing.mvvmdemo.http.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch

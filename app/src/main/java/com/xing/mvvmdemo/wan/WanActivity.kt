@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.xing.mvvmdemo.MainApplication
 import com.xing.mvvmdemo.R
 import com.xing.mvvmdemo.base.Result
+import com.xing.mvvmdemo.base.data
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -47,18 +50,29 @@ class WanActivity : AppCompatActivity() {
 
 //        viewModel3 = ViewModelProvider(this, WanViewModelFactory2(WanRepository(WanDataSource()))).get(WanViewModel2::class.java)
         viewModel3.articles.observe(this) {
-            if (it is Result.Loading) {
-                progressBar.visibility = View.VISIBLE
-            } else if (it is Result.Error) {
-                progressBar.visibility = View.GONE
-                textView2.text = it.exception.toString()
-            } else {
-                progressBar.visibility = View.GONE
-                textView2.text = it.toString()
+            it?.let { result ->
+                when (result) {
+                    is Result.Loading -> {
+                        // show progress
+                        progressBar.visibility = View.VISIBLE
+                    }
+                    is Result.Error -> {
+                        // handle error
+                        progressBar.visibility = View.GONE
+                        Toast.makeText(MainApplication.context, result.exception.toString(), Toast.LENGTH_LONG).show()
+                    }
+                    is Result.Success -> {
+                        // show success result
+                        progressBar.visibility = View.GONE
+                    }
+                }
+                result.data?.let { data: ArticleData ->
+                    // show result
+                    textView2.text = data.toString()
+                }
             }
         }
+        // request remote api
         viewModel3.getArticleList(0)
-
-
     }
 }

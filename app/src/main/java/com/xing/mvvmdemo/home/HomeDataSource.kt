@@ -1,7 +1,7 @@
 package com.xing.mvvmdemo.home
 
-import com.xing.mvvmdemo.ApiService
-import com.xing.mvvmdemo.RetrofitClient
+import com.xing.mvvmdemo.http.ApiService
+import com.xing.mvvmdemo.http.RetrofitClient
 
 
 class HomeDataSource {

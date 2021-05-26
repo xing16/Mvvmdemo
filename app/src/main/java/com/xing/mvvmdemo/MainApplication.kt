@@ -3,9 +3,9 @@ package com.xing.mvvmdemo
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import com.xing.mvvmdemo.koin.dataSourceModule
-import com.xing.mvvmdemo.koin.repositoryModule
-import com.xing.mvvmdemo.koin.viewModelModule
+import com.xing.mvvmdemo.di.dataSourceModule
+import com.xing.mvvmdemo.di.repositoryModule
+import com.xing.mvvmdemo.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

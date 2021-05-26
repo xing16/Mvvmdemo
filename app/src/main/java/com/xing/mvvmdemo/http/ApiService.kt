@@ -1,10 +1,7 @@
-package com.xing.mvvmdemo
+package com.xing.mvvmdemo.http
 
-import com.xing.mvvmdemo.base.Response
 import com.xing.mvvmdemo.home.HomeData
-import com.xing.mvvmdemo.wan.Article
 import com.xing.mvvmdemo.wan.ArticleData
-import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

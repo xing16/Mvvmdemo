@@ -1,4 +1,4 @@
-package com.xing.mvvmdemo
+package com.xing.mvvmdemo.http
 
 /**
  *

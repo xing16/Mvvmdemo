@@ -1,11 +1,14 @@
-package com.xing.mvvmdemo.wan
+package com.xing.mvvmdemo.common.base
 
 import android.util.Log
 import android.widget.Toast
-import com.xing.mvvmdemo.ApiException
 import com.xing.mvvmdemo.MainApplication
-import com.xing.mvvmdemo.base.Response
-import com.xing.mvvmdemo.base.Result
+import com.xing.mvvmdemo.http.ApiException
+import com.xing.mvvmdemo.http.Response
+import com.xing.mvvmdemo.http.Result
+import com.xing.mvvmdemo.wan.ArticleData
+import com.xing.mvvmdemo.wan.IWanRepository
+import com.xing.mvvmdemo.wan.WanRemoteDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +20,7 @@ import java.net.ConnectException
 import java.net.SocketException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
+import kotlin.reflect.KSuspendFunction1
 
 /**
  *
@@ -28,39 +32,13 @@ import java.net.UnknownHostException
  * @UpdateDate: 2021/5/24 10:15
  * @UpdateRemark: 无
  */
+open class BaseRepository(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) {
 
-
-interface IWanRepository {
-
-    suspend fun getArticle(page: Int): Flow<Result<ArticleData>>
-}
-
-
-open class BaseRepository(private val dispatcher: CoroutineDispatcher) {
-
-    open fun <P, R> execute(p: P, block: (params: P) -> Response<R>): Flow<Result<R>> {
-        return flow {
-            // loading
-            emit(Result.Loading)
-            val response = block(p)
-            if (response.isSuccess) {
-                emit(Result.Success(response.data))
-            } else {
-                emit(Result.Error(ApiException(response.errMsg ?: "", response.errorCode)))
-            }
-        }.catch { exception ->
-            emit(Result.Error(Exception(exception)))
-        }.flowOn(dispatcher)
-    }
-}
-
-class WanRepository(private val dataSource: WanDataSource) : IWanRepository {
-
-    override suspend fun getArticle(page: Int): Flow<Result<ArticleData>> {
+    open fun <P, R> execute(parameters: P, block: KSuspendFunction1<P, Response<R>>): Flow<Result<R>> {
         return flow {
             emit(Result.Loading)
             Log.e("debugdebug", "getArticle: " + Thread.currentThread().name)
-            val response: Response<ArticleData> = dataSource.getArticles(page)
+            val response = block.invoke(parameters)
             if (response.isSuccess) {
                 emit(Result.Success(response.data))
             } else {
@@ -81,18 +59,34 @@ class WanRepository(private val dataSource: WanDataSource) : IWanRepository {
 
                 }
             }
-
             emit(Result.Error(Exception(throwable)))
-        }.flowOn(Dispatchers.IO)
+        }.flowOn(dispatcher)
     }
-
-
 }
 
-//class WanRepository2(private val dataSource: WanDataSource, dispatcher: CoroutineDispatcher) : BaseRepository(dispatcher), IWanRepository {
-//    override suspend fun getArticle(page: Int): Flow<Result<ArticleData>> {
-//        return execute(page) {
-//            dataSource::getArticles
-//        }
+
+class WanRepository2(
+    private val dataSource: WanRemoteDataSource,
+    private val dispatcher: CoroutineDispatcher
+) : BaseRepository(dispatcher), IWanRepository {
+
+    override suspend fun getArticle(page: Int): Flow<Result<ArticleData>> {
+        return execute(page, dataSource::getArticles)
+    }
+}
+
+//class Test {
+//    fun getres(a: String, b: String): String {
+//        return "$a -----66666 -------$b"
 //    }
+//}
+//
+//
+//fun test(a: String, b: String, lock: (String, String) -> String): String {
+//    return lock(a, b)
+//}
+//
+//fun main() {
+//    val tt = Test()
+//    println(test("11", "22", tt::getres))
 //}

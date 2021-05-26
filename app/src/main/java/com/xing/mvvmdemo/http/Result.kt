@@ -1,4 +1,4 @@
-package com.xing.mvvmdemo.base
+package com.xing.mvvmdemo.http
 
 
 sealed class Result<out R> {

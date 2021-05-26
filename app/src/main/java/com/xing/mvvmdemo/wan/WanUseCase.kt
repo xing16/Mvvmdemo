@@ -1,10 +1,9 @@
 package com.xing.mvvmdemo.wan
 
-import com.xing.mvvmdemo.base.FlowUseCase
+import com.xing.mvvmdemo.common.FlowUseCase
 import com.xing.mvvmdemo.base.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 
 /**
  *
@@ -18,7 +17,5 @@ import kotlinx.coroutines.flow.flow
  */
 class WanUseCase(dispatcher: CoroutineDispatcher) : FlowUseCase<WanRequest, ArticleData>(dispatcher) {
 
-    override suspend fun execute(parameters: WanRequest): Flow<Result<ArticleData>> = WanRepository(WanDataSource()).getArticle(parameters.page)
-
-
+    override suspend fun execute(parameters: WanRequest): Flow<Result<ArticleData>> = WanRepositoryImpl(WanRemoteDataSource(), null).getArticle(parameters.page)
 }

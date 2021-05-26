@@ -1,7 +1,7 @@
-package com.xing.mvvmdemo.base
+package com.xing.mvvmdemo.common
 
+import com.xing.mvvmdemo.http.Result
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 
 

@@ -1,5 +1,8 @@
 package com.xing.mvvmdemo.base
 
+import com.xing.mvvmdemo.http.ApiException
+import com.xing.mvvmdemo.http.Response
+import com.xing.mvvmdemo.http.Result
 import java.net.ConnectException
 import java.net.UnknownHostException
 
@@ -12,7 +15,7 @@ open class BaseRepository {
             if (response.errorCode == 0) {
                 Result.Success(response.data)
             } else {
-                Result.Error(ApiException(response as Response<Nothing>))
+                Result.Error(ApiException(response.errMsg ?: "", response.errorCode))
             }
         } catch (exception: Exception) {
             Result.Error(exception)
