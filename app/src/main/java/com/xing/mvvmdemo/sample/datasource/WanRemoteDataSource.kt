@@ -1,8 +1,9 @@
-package com.xing.mvvmdemo.wan
+package com.xing.mvvmdemo.sample.datasource
 
 import com.xing.mvvmdemo.http.ApiService
 import com.xing.mvvmdemo.http.RetrofitClient
 import com.xing.mvvmdemo.http.Response
+import com.xing.mvvmdemo.sample.ArticleData
 
 /**
  *

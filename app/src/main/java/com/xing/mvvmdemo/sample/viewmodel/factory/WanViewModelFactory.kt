@@ -1,10 +1,9 @@
-package com.xing.mvvmdemo.wan
+package com.xing.mvvmdemo.sample.viewmodel.factory
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.xing.mvvmdemo.home.HomeUseCase
-import com.xing.mvvmdemo.home.HomeViewModel
+import com.xing.mvvmdemo.sample.WanUseCase
+import com.xing.mvvmdemo.sample.viewmodel.BasicViewModel
 
 /**
  *
@@ -16,14 +15,14 @@ import com.xing.mvvmdemo.home.HomeViewModel
  * @UpdateDate: 2021/4/13 10:54
  * @UpdateRemark: 无
  */
-class WanViewModelFactory2(
-   private val iWanRepository: IWanRepository
+class WanViewModelFactory(
+    private val params: String? = null
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass == WanViewModel2::class.java) {
-            return WanViewModel2(iWanRepository) as T
+        if (modelClass == BasicViewModel::class.java) {
+            return BasicViewModel(params) as T
         }
         return super.create(modelClass)
     }

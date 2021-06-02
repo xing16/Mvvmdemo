@@ -1,7 +1,8 @@
-package com.xing.mvvmdemo.wan
+package com.xing.mvvmdemo.sample.repository
 
 import kotlinx.coroutines.flow.Flow
 import com.xing.mvvmdemo.http.Result
+import com.xing.mvvmdemo.sample.ArticleData
 
 /**
  *

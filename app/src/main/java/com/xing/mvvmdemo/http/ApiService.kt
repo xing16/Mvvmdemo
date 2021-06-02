@@ -1,7 +1,7 @@
 package com.xing.mvvmdemo.http
 
 import com.xing.mvvmdemo.home.HomeData
-import com.xing.mvvmdemo.wan.ArticleData
+import com.xing.mvvmdemo.sample.ArticleData
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

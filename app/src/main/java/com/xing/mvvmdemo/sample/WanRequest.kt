@@ -1,4 +1,4 @@
-package com.xing.mvvmdemo.wan
+package com.xing.mvvmdemo.sample
 
 /**
  *

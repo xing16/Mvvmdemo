@@ -1,6 +1,11 @@
 package com.xing.mvvmdemo.di
 
-import com.xing.mvvmdemo.wan.*
+import com.xing.mvvmdemo.sample.datasource.WanCacheDataSource
+import com.xing.mvvmdemo.sample.datasource.WanRemoteDataSource
+import com.xing.mvvmdemo.sample.repository.IWanRepository
+import com.xing.mvvmdemo.sample.repository.WanRepositoryImpl
+import com.xing.mvvmdemo.sample.viewmodel.LiveDataViewModel
+import com.xing.mvvmdemo.sample.viewmodel.StateFlowViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -31,6 +36,10 @@ val repositoryModule = module {
 
 val viewModelModule = module {
     viewModel {
-        WanViewModel2(get())
+        LiveDataViewModel(get())
+
+    }
+    viewModel {
+        StateFlowViewModel(get())
     }
 }

@@ -1,4 +1,4 @@
-package com.xing.mvvmdemo.wan
+package com.xing.mvvmdemo.sample
 
 /**
  *
@@ -12,7 +12,7 @@ package com.xing.mvvmdemo.wan
  */
 data class ArticleData(
     val curPage: Int,
-    val datas: List<Article>,
+    val datas: List<Article>?,
     val offset: Int,
     val over: Boolean,
     val pageCount: Int,

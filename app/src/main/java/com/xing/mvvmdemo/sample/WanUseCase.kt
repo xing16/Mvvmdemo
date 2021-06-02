@@ -1,7 +1,9 @@
-package com.xing.mvvmdemo.wan
+package com.xing.mvvmdemo.sample
 
 import com.xing.mvvmdemo.common.FlowUseCase
 import com.xing.mvvmdemo.http.Result
+import com.xing.mvvmdemo.sample.datasource.WanRemoteDataSource
+import com.xing.mvvmdemo.sample.repository.WanRepositoryImpl
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 

@@ -6,9 +6,9 @@ import com.xing.mvvmdemo.MainApplication
 import com.xing.mvvmdemo.http.ApiException
 import com.xing.mvvmdemo.http.Response
 import com.xing.mvvmdemo.http.Result
-import com.xing.mvvmdemo.wan.ArticleData
-import com.xing.mvvmdemo.wan.IWanRepository
-import com.xing.mvvmdemo.wan.WanRemoteDataSource
+import com.xing.mvvmdemo.sample.ArticleData
+import com.xing.mvvmdemo.sample.repository.IWanRepository
+import com.xing.mvvmdemo.sample.datasource.WanRemoteDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
